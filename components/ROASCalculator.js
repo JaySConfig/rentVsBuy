@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 
-const ROICalculator = () => {
+const ROASCalculator = () => {
     const [adSpend, setAdSpend] = useState('');
     const [revenue, setRevenue] = useState('');
     
     const [results, setResults] = useState({
-        profit: 0,
-        roi: 0,
+        roas: 0,
+        revenue: 0,
         showResults: false
     });
 
@@ -18,12 +18,11 @@ const ROICalculator = () => {
         const spend = parseFloat(adSpend);
         const rev = parseFloat(revenue);
 
-        const profit = rev - spend;
-        const roi = ((profit) / spend) * 100;
+        const roas = (rev / spend) * 100;
 
         setResults({
-            profit: profit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-            roi: roi.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+            roas: roas.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+            revenue: rev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
             showResults: true
         });
     };
@@ -41,7 +40,7 @@ const ROICalculator = () => {
                             value={adSpend}
                             onChange={(e) => setAdSpend(e.target.value)}
                             className="w-full p-3 border rounded-lg bg-white text-lg"
-                            placeholder="Enter your total investment"
+                            placeholder="Enter your advertising cost"
                             required
                         />
                     </div>
@@ -55,7 +54,7 @@ const ROICalculator = () => {
                             value={revenue}
                             onChange={(e) => setRevenue(e.target.value)}
                             className="w-full p-3 border rounded-lg bg-white text-lg"
-                            placeholder="Enter total revenue generated"
+                            placeholder="Enter revenue from ads"
                             required
                         />
                     </div>
@@ -65,7 +64,7 @@ const ROICalculator = () => {
                     type="submit"
                     className="btn bg-blue-800 text-white w-full text-lg py-3 mt-6"
                 >
-                    Calculate ROI
+                    Calculate ROAS
                 </button>
             </form>
 
@@ -73,8 +72,8 @@ const ROICalculator = () => {
                 <div className="mt-8 p-6 bg-base-100 rounded-2xl text-left">
                     <h3 className="text-2xl font-bold mb-4">Results</h3>
                     <div className="space-y-4 text-xl">
-                        <p><span className="font-semibold">Profit:</span> ${results.profit}</p>
-                        <p><span className="font-semibold">ROI:</span> {results.roi}%</p>
+                        <p><span className="font-semibold">Revenue:</span> ${results.revenue}</p>
+                        <p><span className="font-semibold">ROAS:</span> {results.roas}%</p>
                     </div>
                 </div>
             )}
@@ -82,4 +81,4 @@ const ROICalculator = () => {
     );
 };
 
-export default ROICalculator;
+export default ROASCalculator;
