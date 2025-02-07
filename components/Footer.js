@@ -25,6 +25,7 @@ const Footer = () => {
                             <li><Link href="/calculators/roas-calculator" className="hover:text-blue-600">ROAS Calculator</Link></li>
                             <li><Link href="/calculators/ltv-calculator" className="hover:text-blue-600">LTV Calculator</Link></li>
                             <li><Link href="/calculators/cac-calculator" className="hover:text-blue-600">CAC Calculator</Link></li>
+
                         </ul>
                     </div>
 
