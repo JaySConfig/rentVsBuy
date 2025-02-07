@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from "next/link";
 
@@ -27,24 +27,21 @@ export default function Navbar() {
           {/* MOBILE DROPDOWN */}
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-100 rounded-lg w-52"
+            className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow-lg bg-base-100 rounded-lg w-52"
           >
             <li>
               <Link href="/">Home</Link>
             </li>
-            <li tabIndex={0}>
+            <li>
               <details>
                 <summary>Calculators</summary>
-                <ul className="p-2 bg-base-100">
-                  <li>
-                    <Link href="/calculators/ROI">ROI Calculator</Link>
-                  </li>
-                  <li>
-                    <Link href="/calculators/ROAS">ROAS Calculator</Link>
-                  </li>
-                  <li>
-                    <Link href="/calculators/LTV">LTV Calculator</Link>
-                  </li>
+                <ul className="p-2 bg-base-100 shadow-lg rounded-lg">
+                  <li><Link href="/calculators/roi-calculator">ROI Calculator</Link></li>
+                  <li><Link href="/calculators/roas-calculator">ROAS Calculator</Link></li>
+                  <li><Link href="/calculators/ltv-calculator">LTV Calculator</Link></li>
+                  <li><Link href="/calculators/social-media-engagement-calculator">Social Media Engagement</Link></li>
+                  <li><Link href="/calculators/cac-calculator">Customer Acquisition Cost</Link></li>
+                  <li><Link href="/calculators/ppc-calculator">Pay per Click Calculator</Link></li>
                 </ul>
               </details>
             </li>
@@ -65,21 +62,16 @@ export default function Navbar() {
           <li>
             <Link href="/">Home</Link>
           </li>
-          <li tabIndex={0}>
+          <li>
             <details>
-              <summary>
-                Calculators
-              </summary>
-              <ul className="p-2 bg-base-100 shadow-lg rounded-lg">
-                <li>
-                  <Link href="/calculators/roi">ROI Calculator</Link>
-                </li>
-                <li>
-                  <Link href="/calculators/roas">ROAS Calculator</Link>
-                </li>
-                <li>
-                  <Link href="/calculators/ltv">LTV Calculator</Link>
-                </li>
+              <summary>Calculators</summary>
+              <ul className="p-2 bg-base-100 shadow-lg rounded-lg mt-2 z-50">
+                <li><Link href="/calculators/roi-calculator">ROI Calculator</Link></li>
+                <li><Link href="/calculators/roas-calculator">ROAS Calculator</Link></li>
+                <li><Link href="/calculators/ltv-calculator">LTV Calculator</Link></li>
+                <li><Link href="/calculators/social-media-engagement-calculator">Social Media Engagement</Link></li>
+                <li><Link href="/calculators/cac-calculator">Customer Acquisition Cost</Link></li>
+                <li><Link href="/calculators/ppc-calculator">Pay per Click Calculator</Link></li>
               </ul>
             </details>
           </li>

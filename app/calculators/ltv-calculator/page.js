@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 export default function Page() {
   return (
     <main>
+      <div className="min-h-screen flex flex-col bg-base-200">
       <section className="bg-base-100">
         <Navbar />
       </section>
@@ -36,9 +37,11 @@ export default function Page() {
             </div>
           </section>
 
-          <Footer />
         </div>
       </section>
+      <Footer />
+
+      </div>
     </main>
   );
 }
