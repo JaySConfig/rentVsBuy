@@ -64,7 +64,7 @@ const CACCalculator = () => {
                             value={newCustomers}
                             onChange={(e) => setTotalNewCustomers(e.target.value)}
                             className="w-full p-3 border rounded-lg bg-white text-lg"
-                            placeholder="Enter how many purchases per year"
+                            placeholder="Enter how many purchases within your specified timeframe"
                             required
                         />
                     </div>
