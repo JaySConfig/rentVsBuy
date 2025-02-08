@@ -3,10 +3,16 @@ import Footer from "@/components/Footer";
 import ROICalculator from "@/components/ROICalculator";
 import Navbar from "@/components/NavBar";
 import Link from "next/link";
+import Head from "next/head";
 
 
 export default function Home() {
   return (
+    <>
+    <Head>
+      <title>Marketing Calculators - Free Tools for Marketing Analytics</title>
+      <meta name="description" content="Free marketing calculators for ROI, ROAS, LTV, PPC, and more. Make data-driven marketing decisions with our easy-to-use tools for campaign analysis." />
+    </Head>
     <main>
       {/* nav */}
       <div className="min-h-screen flex flex-col bg-base-200">
@@ -141,5 +147,6 @@ export default function Home() {
       </div>
       
     </main>
+    </>
   );
 }

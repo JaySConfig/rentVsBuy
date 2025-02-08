@@ -5,9 +5,16 @@ import dynamic from 'next/dynamic';
 const PPCCalculator = dynamic(() => import('../../../components/PPCCalculator'), { ssr: false });
 import Navbar from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import Head from 'next/head';
 
 export default function Page() {
   return (
+    <>
+    <Head>
+      <title>PPC Calculator - Pay Per Click Campaign Calculator</title>
+      <meta name="description" content="Plan your PPC campaigns with our Pay-Per-Click calculator. Calculate potential clicks, conversions, and revenue based on your ad spend, CPC, and conversion rate." />
+    </Head>
+
     <div className="min-h-screen flex flex-col">
       <section className="bg-base-100">
         <Navbar />
@@ -96,5 +103,6 @@ export default function Page() {
 
       <Footer />
     </div>
+    </>
   );
 }

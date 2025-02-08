@@ -2,10 +2,17 @@
 
 import Navbar from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import Head from 'next/head';
 
 export default function Page() {
   return (
+    <>
+    <Head>
+        <title>About Us - PPC Calculator</title>
+        <meta name="description" content="Learn more about our PPC Calculator and how it helps you optimize ad spend, increase conversions, and maximize ROI." />
+      </Head>
     <main>
+    
       <div className='min-h-screen flex flex-col bg-base-200'>
       <section className="bg-base-100">
         <Navbar />
@@ -45,5 +52,6 @@ export default function Page() {
 
       </div>
     </main>
+    </>
   );
 }
