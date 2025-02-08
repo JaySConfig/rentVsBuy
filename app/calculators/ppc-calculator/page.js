@@ -79,7 +79,7 @@ export default function Page() {
 
               <div>
                 <h3 className="font-semibold mb-1 text-lg">
-                  What if I don't know my conversion rate or average order value?
+                What if I don&apos;t know my conversion rate or average order value?
                 </h3>
                 <p>
                   You can experiment with different numbers or look at past campaign data to set a baseline.
@@ -93,7 +93,7 @@ export default function Page() {
                 </h3>
                 <p>
                   Absolutely. Any platform where you pay per click can be analyzed with these inputs.
-                  Just ensure your CPC and conversion rate match the platform's average metrics.
+                  Just ensure your CPC and conversion rate match the platform&apos;s average metrics.
                 </p>
               </div>
             </div>
