@@ -12,8 +12,8 @@ const Footer = () => {
                     <div>
                         <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
                         <ul className="space-y-2">
-                            <li><Link href="/" className="hover:text-blue-600">Home</Link></li>
-                            <li><Link href="/about" className="hover:text-blue-600">About</Link></li>
+                            {/* <li><Link href="/" className="hover:text-blue-600">Home</Link></li>
+                            <li><Link href="/about" className="hover:text-blue-600">About</Link></li> */}
                         </ul>
                     </div>
 
@@ -21,10 +21,10 @@ const Footer = () => {
                     <div>
                         <h3 className="font-semibold text-lg mb-4">Calculators</h3>
                         <ul className="space-y-2">
-                            <li><Link href="/calculators/roi-calculator" className="hover:text-blue-600">ROI Calculator</Link></li>
+                            {/* <li><Link href="/calculators/roi-calculator" className="hover:text-blue-600">ROI Calculator</Link></li>
                             <li><Link href="/calculators/roas-calculator" className="hover:text-blue-600">ROAS Calculator</Link></li>
                             <li><Link href="/calculators/ltv-calculator" className="hover:text-blue-600">LTV Calculator</Link></li>
-                            <li><Link href="/calculators/cac-calculator" className="hover:text-blue-600">CAC Calculator</Link></li>
+                            <li><Link href="/calculators/cac-calculator" className="hover:text-blue-600">CAC Calculator</Link></li> */}
 
                         </ul>
                     </div>
@@ -32,10 +32,10 @@ const Footer = () => {
                     {/* More Calculators */}
                     <div>
                         <h3 className="font-semibold text-lg mb-4">More Tools</h3>
-                        <ul className="space-y-2">
-                            <li><Link href="/calculators/social-media-engagement-calculator" className="hover:text-blue-600">Social Media Calculator</Link></li>
+                        {/* <ul className="space-y-2"> */}
+                            {/* <li><Link href="/calculators/social-media-engagement-calculator" className="hover:text-blue-600">Social Media Calculator</Link></li>
                             <li><Link href="/calculators/ppc-calculator" className="hover:text-blue-600">PPC Calculator</Link></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
 
