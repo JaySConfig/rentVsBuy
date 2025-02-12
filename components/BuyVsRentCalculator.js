@@ -56,64 +56,127 @@ const BuyVsRentCalculator = () => {
     }));
   };
 
-  const handleCalculate = () => {
-    const downPaymentAmount = inputs.downPaymentType === 'percent' 
-      ? (inputs.housePrice * inputs.downPayment / 100)
-      : inputs.downPayment;
+  // const handleCalculate = () => {
+  //   const downPaymentAmount = inputs.downPaymentType === 'percent' 
+  //     ? (inputs.housePrice * inputs.downPayment / 100)
+  //     : inputs.downPayment;
 
-    let totalBuyingCosts = downPaymentAmount + inputs.mortgageFees + inputs.legalFees + inputs.renovationCosts;
-    let houseValue = inputs.housePrice;
+  //   let totalBuyingCosts = downPaymentAmount + inputs.mortgageFees + inputs.legalFees + inputs.renovationCosts;
+  //   let houseValue = inputs.housePrice;
     
-    const monthlyRate = inputs.mortgageRate / 100 / 12;
-    const numPayments = inputs.mortgageTerm * 12;
-    const monthlyMortgage = (inputs.housePrice - downPaymentAmount) * 
-      (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
-      (Math.pow(1 + monthlyRate, numPayments) - 1);
+  //   const monthlyRate = inputs.mortgageRate / 100 / 12;
+  //   const numPayments = inputs.mortgageTerm * 12;
+  //   const monthlyMortgage = (inputs.housePrice - downPaymentAmount) * 
+  //     (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+  //     (Math.pow(1 + monthlyRate, numPayments) - 1);
 
-    let monthlyRent = inputs.monthlyRent;
-    let totalRent = 0;
-    let investmentValue = showInvestmentComparison ? downPaymentAmount : 0;
+  //   let monthlyRent = inputs.monthlyRent;
+  //   let totalRent = 0;
+  //   let investmentValue = showInvestmentComparison ? downPaymentAmount : 0;
 
-    for(let year = 0; year < inputs.mortgageTerm; year++) {
-      const yearlyMortgage = monthlyMortgage * 12;
-      const yearlyMaintenance = houseValue * (inputs.maintenanceCost / 100);
-      const yearlyBuyingCosts = yearlyMortgage + yearlyMaintenance + inputs.homeInsurance;
-      const yearlyRent = monthlyRent * 12;
+  //   for(let year = 0; year < inputs.mortgageTerm; year++) {
+  //     const yearlyMortgage = monthlyMortgage * 12;
+  //     const yearlyMaintenance = houseValue * (inputs.maintenanceCost / 100);
+  //     const yearlyBuyingCosts = yearlyMortgage + yearlyMaintenance + inputs.homeInsurance;
+  //     const yearlyRent = monthlyRent * 12;
       
-      if (showInvestmentComparison) {
-        const monthlyDifference = (yearlyBuyingCosts - yearlyRent) / 12;
-        for(let month = 0; month < 12; month++) {
-          investmentValue *= (1 + inputs.investmentReturn/100/12);
-          investmentValue += monthlyDifference;
+  //     if (showInvestmentComparison) {
+  //       const monthlyDifference = (yearlyBuyingCosts - yearlyRent) / 12;
+  //       for(let month = 0; month < 12; month++) {
+  //         investmentValue *= (1 + inputs.investmentReturn/100/12);
+  //         investmentValue += monthlyDifference;
+  //       }
+  //     }
+      
+  //     totalBuyingCosts += yearlyBuyingCosts;
+  //     totalRent += yearlyRent;
+  //     houseValue *= (1 + inputs.homeAppreciation / 100);
+  //     monthlyRent *= (1 + inputs.rentIncrease / 100);
+  //   }
+
+  //   yearlyData.push({ /////////////
+  //     year,
+  //     buyingPosition: houseValue - totalBuyingCosts,
+  //     rentingPosition: investmentValue - totalRent
+  //   });
+
+  //   setResults({
+  //     buyingTotal: -Math.round(totalBuyingCosts),
+  //     finalHouseValue: Math.round(houseValue),
+  //     buyingNetPosition: Math.round(houseValue - totalBuyingCosts),
+  //     totalRent: -Math.round(totalRent),
+  //     investmentValue: showInvestmentComparison ? Math.round(investmentValue) : 0,
+  //     rentingNetPosition: Math.round(showInvestmentComparison ? 
+  //       (investmentValue - totalRent) : -totalRent),
+  //     difference: Math.abs(Math.round(
+  //       (showInvestmentComparison ? (investmentValue - totalRent) : -totalRent) - 
+  //       (houseValue - totalBuyingCosts)
+  //     ))
+  //   });
+  // };
+
+    const handleCalculate = () => {
+      const downPaymentAmount = inputs.downPaymentType === 'percent' 
+        ? (inputs.housePrice * inputs.downPayment / 100)
+        : inputs.downPayment;
+
+      let totalBuyingCosts = downPaymentAmount + inputs.mortgageFees + inputs.legalFees + inputs.renovationCosts;
+      let houseValue = inputs.housePrice;
+      
+      const monthlyRate = inputs.mortgageRate / 100 / 12;
+      const numPayments = inputs.mortgageTerm * 12;
+      const monthlyMortgage = (inputs.housePrice - downPaymentAmount) * 
+        (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+        (Math.pow(1 + monthlyRate, numPayments) - 1);
+
+      let monthlyRent = inputs.monthlyRent;
+      let totalRent = 0;
+      let investmentValue = showInvestmentComparison ? downPaymentAmount : 0;
+      let newYearlyData = []; // Initialize array for chart data
+
+      for(let year = 0; year < inputs.mortgageTerm; year++) {
+        const yearlyMortgage = monthlyMortgage * 12;
+        const yearlyMaintenance = houseValue * (inputs.maintenanceCost / 100);
+        const yearlyBuyingCosts = yearlyMortgage + yearlyMaintenance + inputs.homeInsurance;
+        const yearlyRent = monthlyRent * 12;
+        
+        if (showInvestmentComparison) {
+          const monthlyDifference = (yearlyBuyingCosts - yearlyRent) / 12;
+          for(let month = 0; month < 12; month++) {
+            investmentValue *= (1 + inputs.investmentReturn/100/12);
+            investmentValue += monthlyDifference;
+          }
         }
+        
+        totalBuyingCosts += yearlyBuyingCosts;
+        totalRent += yearlyRent;
+        houseValue *= (1 + inputs.homeAppreciation / 100);
+        monthlyRent *= (1 + inputs.rentIncrease / 100);
+
+        // Add data point for each year
+        newYearlyData.push({
+          year,
+          buyingPosition: houseValue - totalBuyingCosts,
+          rentingPosition: investmentValue - totalRent
+        });
       }
-      
-      totalBuyingCosts += yearlyBuyingCosts;
-      totalRent += yearlyRent;
-      houseValue *= (1 + inputs.homeAppreciation / 100);
-      monthlyRent *= (1 + inputs.rentIncrease / 100);
-    }
 
-    yearlyData.push({ /////////////
-      year,
-      buyingPosition: houseValue - totalBuyingCosts,
-      rentingPosition: investmentValue - totalRent
-    });
+      setYearlyData(newYearlyData); // Update the chart data
 
-    setResults({
-      buyingTotal: -Math.round(totalBuyingCosts),
-      finalHouseValue: Math.round(houseValue),
-      buyingNetPosition: Math.round(houseValue - totalBuyingCosts),
-      totalRent: -Math.round(totalRent),
-      investmentValue: showInvestmentComparison ? Math.round(investmentValue) : 0,
-      rentingNetPosition: Math.round(showInvestmentComparison ? 
-        (investmentValue - totalRent) : -totalRent),
-      difference: Math.abs(Math.round(
-        (showInvestmentComparison ? (investmentValue - totalRent) : -totalRent) - 
-        (houseValue - totalBuyingCosts)
-      ))
-    });
-  };
+      setResults({
+        buyingTotal: -Math.round(totalBuyingCosts),
+        finalHouseValue: Math.round(houseValue),
+        buyingNetPosition: Math.round(houseValue - totalBuyingCosts),
+        totalRent: -Math.round(totalRent),
+        investmentValue: showInvestmentComparison ? Math.round(investmentValue) : 0,
+        rentingNetPosition: Math.round(showInvestmentComparison ? 
+          (investmentValue - totalRent) : -totalRent),
+        difference: Math.abs(Math.round(
+          (showInvestmentComparison ? (investmentValue - totalRent) : -totalRent) - 
+          (houseValue - totalBuyingCosts)
+        ))
+      });
+    };
 
   const renderInput = (name, label, type = 'number', options = {}) => {
     const { isPercentage, isCurrency, hasSelect, selectOptions, hint } = options;
@@ -152,11 +215,8 @@ const BuyVsRentCalculator = () => {
   };
 
   const renderResults = () => {
-    // if (!results) return null;
-    {yearlyData.length > 0 && (
-      <ResultsGraph yearlyData={yearlyData} />
-    )}
-
+    if (!results || !results.buyingTotal) return null;  // Add this check
+  
     return (
       <div className="mt-8">
         <h2 className="text-2xl font-bold text-center mb-6">
