@@ -2,16 +2,22 @@ import Footer from "@/components/Footer";
 import Head from "next/head";
 import Link from "next/link";
 
+export const metadata = {
+  title: "How It Works - UK Buy vs Rent Calculator",
+  description: "Understand how our UK Buy vs Rent Calculator works. Learn how we compare mortgage payments, rent increases, and home appreciation to help you decide.",
+  openGraph: {
+    title: "How It Works - UK Buy vs Rent Calculator",
+    description: "Learn how our calculator compares property buying and renting costs in the UK",
+    type: "website",
+    locale: "en_GB",
+  }
+};
+
+
 export default function HowItWorks() {
   return (
     <>
-      <Head>
-        <title>How It Works - UK Buy vs Rent Calculator</title>
-        <meta 
-          name="description" 
-          content="Understand how our UK Buy vs Rent Calculator works. Learn how we compare mortgage payments, rent increases, and home appreciation to help you decide." 
-        />
-      </Head>
+     
 
       <main>
         <div className="min-h-screen flex flex-col bg-base-200">
