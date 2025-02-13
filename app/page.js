@@ -5,16 +5,22 @@ import Head from "next/head";
 import BuyVsRentCalculator from "@/components/BuyVsRentCalculator";
 import FAQSection from "@/components/FAQSection";
 
+export const metadata = {
+  title: "UK Buy vs Rent Calculator – Make Smarter Property Decisions",
+  description: "Make smarter UK property decisions with our Buy vs Rent calculator. Compare long-term costs of buying and renting with our comprehensive analysis tool.",
+  keywords: "buy vs rent calculator, UK property calculator, mortgage calculator, rent or buy UK, property investment, UK housing costs",
+  openGraph: {
+    title: "UK Buy vs Rent Calculator",
+    description: "Compare buying vs renting costs in the UK with our free calculator. Make smarter property decisions.",
+    type: "website",
+    locale: "en_GB",
+  }
+};
+
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>UK Buy vs Rent Calculator – Make Smarter Property Decisions</title>
-        <meta 
-          name="description" 
-          content="Make smarter UK property decisions with our Buy vs Rent calculator. Compare long-term costs of buying and renting with our comprehensive analysis tool." 
-        />
-      </Head>
+      
       <main>
         <div className="min-h-screen flex flex-col bg-base-200">
           <section className="bg-base-200 text-black">
